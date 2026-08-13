@@ -153,14 +153,13 @@
 
             <p>Grâce à une pratique régulière, chacun peut améliorer sa souplesse, sa force et sa santé.</p>
 
-            <a class="btn btn-outline intro__button" href="#activites">En savoir plus sur nos activités</a>
         </article>
 
         <section id="inscription" class="registration" aria-labelledby="registration-title">
             <h2 id="registration-title">Nous rejoindre</h2>
             <p>Demande d’inscription – Saison 2026-2027</p>
 
-            <form action="#" method="post">
+            <form action="sheet.php" method="post">
                 <div class="form-grid">
                     <label>Nom <em>*</em>
                         <input type="text" name="nom" autocomplete="family-name" required>
@@ -193,9 +192,20 @@
                     <label>Téléphone portable <em>*</em>
                         <input type="tel" name="telephone" autocomplete="tel" required>
                     </label>
+
+                    <label class="honeypot" aria-hidden="true">Ne pas remplir ce champ
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </label>
+
+                    <label class="field-full captcha-field"><span id="captcha-question">Question anti-spam</span> <em>*</em>
+                        <input type="number" name="captcha" inputmode="numeric" aria-describedby="captcha-help" required>
+                        <small id="captcha-help">Répondez à cette question avant d’envoyer votre demande.</small>
+                    </label>
                 </div>
 
                 <button class="btn btn-green form-submit" type="submit">Envoyer ma demande</button>
+
+                <p class="form-status" role="status" aria-live="polite"></p>
 
                 <p class="privacy">♙ &nbsp; Vos données sont utilisées uniquement dans le cadre de votre inscription<br>et ne sont jamais partagées.</p>
             </form>
@@ -217,7 +227,20 @@
 
         <div class="footer-social">
             <h2>Nous suivre</h2>
-            <a class="social-circle" href="#" aria-label="Facebook de la section Taïji Quan et Qi Gong" title="Lien Facebook à renseigner">f</a>
+            <div class="social-links">
+                <a class="social-circle" href="#" aria-label="Facebook de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2.6V2.1L14.4 2C11 2 9.8 4 9.8 6.5v2H7v4.2h2.8V22H14v-9.3h3.2l.5-4.2H14Z"/></svg>
+                </a>
+                <a class="social-circle" href="#" aria-label="Instagram de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm9.8 1.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+                </a>
+                <a class="social-circle" href="#" aria-label="TikTok de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.6 2c.3 2.5 1.7 4 4.4 4.2v3.4a8 8 0 0 1-4.4-1.3v6.5A7.2 7.2 0 1 1 9.4 7.7v3.5a3.8 3.8 0 1 0 2.7 3.6V2h3.5Z"/></svg>
+                </a>
+                <a class="social-circle" href="#" aria-label="X de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22H17l-4.9-6.4L6.5 22H3.3l7.3-8.4L2.9 2h6.4l4.4 5.8L18.9 2Zm-1.1 17.8h1.7L8.4 4.1H6.6l11.2 15.7Z"/></svg>
+                </a>
+            </div>
         </div>
     </div>
 

@@ -660,3 +660,52 @@ h1,h2,h3 {
 
     .site-footer__inner { grid-template-columns:1fr; }
 }
+
+/* Social links and registration form feedback */
+.social-links {
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.social-circle {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+}
+.social-circle svg {
+    width:18px;
+    height:18px;
+    fill:currentColor;
+}
+.captcha-field small {
+    display:block;
+    margin-top:6px;
+    color:#5d665f;
+    font-size:.75rem;
+    font-style:normal;
+}
+.honeypot {
+    position:absolute !important;
+    width:1px !important;
+    height:1px !important;
+    padding:0 !important;
+    margin:-1px !important;
+    overflow:hidden !important;
+    clip:rect(0,0,0,0) !important;
+    white-space:nowrap !important;
+    border:0 !important;
+}
+.form-status {
+    min-height:1.4em;
+    margin:12px 0 0;
+    font-size:.86rem;
+    font-weight:600;
+    text-align:center;
+}
+.form-status--pending { color:#5d665f; }
+.form-status--success { color:var(--green); }
+.form-status--error { color:#a6382e; }
+.form-submit:disabled {
+    cursor:wait;
+    opacity:.65;
+}
