@@ -74,17 +74,30 @@
                 },
                 body: JSON.stringify(data)
             });
-            const result = await response.json();
+            let result;
 
-            if (!response.ok || !result.success) {
-                throw new Error(result.message || 'Une erreur est survenue lors de l’envoi.');
+            try {
+                result = await response.json();
+            } catch (error) {
+                console.error(error);
+                showStatus('Une erreur est survenue lors de l’envoi. Veuillez réessayer.', 'error');
+                return;
+            }
+
+            if (!response.ok || !result || !result.success) {
+                const message = result && result.success === false && typeof result.message === 'string' && result.message.trim()
+                    ? result.message
+                    : 'Une erreur est survenue lors de l’envoi. Veuillez réessayer.';
+                showStatus(message, 'error');
+                return;
             }
 
             showStatus(result.message || 'Votre demande a bien été envoyée.', 'success');
             form.reset();
             generateCaptcha();
         } catch (error) {
-            showStatus(error.message || 'Une erreur est survenue lors de l’envoi.', 'error');
+            console.error(error);
+            showStatus('Une erreur est survenue lors de l’envoi. Veuillez réessayer.', 'error');
         } finally {
             submitButton.disabled = false;
             submitButton.textContent = submitLabel;
