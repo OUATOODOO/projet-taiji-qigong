@@ -30,6 +30,7 @@
     const status = form.querySelector('.form-status');
     const submitLabel = submitButton.textContent;
     let captchaAnswer;
+    let isSubmitting = false;
 
     function generateCaptcha() {
         const firstNumber = Math.floor(Math.random() * 9) + 1;
@@ -49,6 +50,8 @@
     form.addEventListener('submit', async function (event) {
         event.preventDefault();
 
+        if (isSubmitting) return;
+
         if (honeypot.value.trim() !== '') {
             showStatus('L’envoi n’a pas pu être validé.', 'error');
             return;
@@ -60,6 +63,8 @@
             return;
         }
 
+        isSubmitting = true;
+        submitButton.hidden = true;
         submitButton.disabled = true;
         submitButton.textContent = 'Envoi en cours...';
         showStatus('Envoi en cours...', 'pending');
@@ -99,6 +104,8 @@
             console.error(error);
             showStatus('Une erreur est survenue lors de l’envoi. Veuillez réessayer.', 'error');
         } finally {
+            isSubmitting = false;
+            submitButton.hidden = false;
             submitButton.disabled = false;
             submitButton.textContent = submitLabel;
         }
