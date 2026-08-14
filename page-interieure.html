@@ -58,6 +58,65 @@
 
         <p>Ut posuere lacus a nibh sollicitudin, vitae hendrerit turpis luctus. In hac habitasse platea dictumst. Aenean volutpat, lectus vitae egestas aliquam, velit augue consequat neque, sit amet porttitor sem lectus vel erat.</p>
     </article>
+
+    <section class="inner-registration-wrapper" aria-label="Inscription">
+        <section id="inscription" class="registration" aria-labelledby="registration-title">
+            <h2 id="registration-title">Nous rejoindre</h2>
+            <p>Demande d’inscription – Saison 2026-2027</p>
+
+            <form action="sheet.php" method="post">
+                <div class="form-grid">
+                    <label>Nom <em>*</em>
+                        <input type="text" name="nom" autocomplete="family-name" required>
+                    </label>
+
+                    <label>Prénom <em>*</em>
+                        <input type="text" name="prenom" autocomplete="given-name" required>
+                    </label>
+
+                    <label class="field-birth">Date de naissance <em>*</em>
+                        <input type="date" name="naissance" autocomplete="bday" required>
+                    </label>
+
+                    <label class="field-full">Adresse <em>*</em>
+                        <input type="text" name="adresse" autocomplete="street-address" required>
+                    </label>
+
+                    <label>Code postal <em>*</em>
+                        <input type="text" name="code_postal" autocomplete="postal-code" inputmode="numeric" required>
+                    </label>
+
+                    <label>Ville <em>*</em>
+                        <input type="text" name="ville" autocomplete="address-level2" required>
+                    </label>
+
+                    <label>Adresse e-mail <em>*</em>
+                        <input type="email" name="email" autocomplete="email" required>
+                    </label>
+
+                    <label>Téléphone portable <em>*</em>
+                        <input type="tel" name="telephone" autocomplete="tel" required>
+                    </label>
+
+                    <label class="honeypot" aria-hidden="true">Ne pas remplir ce champ
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </label>
+
+                    <label class="field-full captcha-field"><span id="captcha-question">Question anti-spam</span> <em>*</em>
+                        <input type="number" name="captcha" inputmode="numeric" aria-describedby="captcha-help" required>
+                        <input type="hidden" name="captcha_token" id="captcha-token">
+                        <small id="captcha-help">Répondez à cette question avant d’envoyer votre demande.</small>
+                    </label>
+                </div>
+
+                <button class="btn btn-green form-submit" type="submit">Envoyer ma demande</button>
+
+                <p class="form-status" role="status" aria-live="polite"></p>
+
+                <p class="privacy">♙ &nbsp; Vos données sont utilisées uniquement dans le cadre de votre inscription<br>et ne sont jamais partagées.</p>
+            </form>
+        </section>
+    </section>
 </main>
 
 <footer class="site-footer">
