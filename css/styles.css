@@ -852,3 +852,131 @@ h1,h2,h3 {
         font-size:1.6rem;
     }
 }
+
+/* Taïji Quan activity page */
+.activity-benefits {
+    margin:4px 0 26px;
+    padding:0;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px 36px;
+    list-style:none;
+}
+.activity-benefits li {
+    position:relative;
+    padding-left:20px;
+    line-height:1.6;
+}
+.activity-benefits li::before {
+    content:"◆";
+    position:absolute;
+    top:.28em;
+    left:1px;
+    color:var(--green);
+    font-size:.62rem;
+    transform:rotate(45deg);
+}
+.activity-media-section { margin-top:58px; }
+.activity-media-section h2 { margin-top:0; }
+.activity-gallery {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-rows:260px 310px;
+    gap:18px;
+}
+.activity-gallery__item { margin:0; }
+.activity-gallery__item button {
+    width:100%;
+    height:100%;
+    display:block;
+    padding:0;
+    overflow:hidden;
+    border:0;
+    border-radius:8px;
+    background:transparent;
+    cursor:zoom-in;
+}
+.activity-gallery__item img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+.activity-gallery__item button:focus-visible {
+    outline:3px solid var(--green);
+    outline-offset:3px;
+}
+.video-gallery {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+}
+.video-card {
+    overflow:hidden;
+    aspect-ratio:16/9;
+    border-radius:8px;
+    background:#111;
+}
+.video-card iframe,
+.video-card video {
+    width:100%;
+    height:100%;
+    display:block;
+    border:0;
+    object-fit:contain;
+}
+.lightbox {
+    position:fixed;
+    z-index:100;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:58px 80px;
+    background:rgba(10,16,11,.9);
+}
+.lightbox.is-open { display:flex; }
+.lightbox__image {
+    max-width:100%;
+    max-height:100%;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+}
+.lightbox button {
+    position:absolute;
+    width:48px;
+    height:48px;
+    padding:0;
+    border:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.92);
+    color:var(--dark);
+    font:2rem/1 var(--serif);
+    cursor:pointer;
+}
+.lightbox button:focus-visible { outline:3px solid var(--sage); outline-offset:3px; }
+.lightbox__close { top:20px; right:20px; }
+.lightbox__previous { left:20px; top:calc(50% - 24px); }
+.lightbox__next { right:20px; top:calc(50% - 24px); }
+body.lightbox-open { overflow:hidden; }
+
+@media (max-width:760px) {
+    .activity-gallery { grid-template-rows:220px 260px; }
+    .video-gallery { grid-template-columns:1fr; }
+    .lightbox { padding:68px 58px; }
+    .lightbox__previous { left:8px; }
+    .lightbox__next { right:8px; }
+}
+@media (max-width:520px) {
+    .activity-benefits { grid-template-columns:1fr; gap:9px; }
+    .activity-media-section { margin-top:48px; }
+    .activity-gallery {
+        grid-template-columns:1fr;
+        grid-template-rows:repeat(4,240px);
+        gap:14px;
+    }
+    .lightbox { padding:72px 12px; }
+    .lightbox button { width:42px; height:42px; }
+    .lightbox__previous { top:auto; bottom:15px; left:calc(50% - 54px); }
+    .lightbox__next { top:auto; right:calc(50% - 54px); bottom:15px; }
+}
