@@ -1,1 +1,184 @@
-<!DOCTYPE html><html lang="fr"><meta charset="utf-8"><title>Horaires & lieux</title><link rel="stylesheet" href="css/styles.css"><body><p style="padding:2rem"><a href="index.html">← Accueil</a></p></body></html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez les cours de Taïji Quan et Qi Gong à Saint-Aubin-de-Médoc : horaires, tarifs et lieu des cours.">
+    <meta name="robots" content="index,follow">
+    <title>Cours, horaires et tarifs Taïji Quan &amp; Qi Gong à Saint-Aubin-de-Médoc | ASSAM</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="brand" href="index.html" aria-label="Accueil - Taïji Quan et Qi Gong ASSAM Saint-Aubin-de-Médoc">
+            <img src="assets/images/logo.png" alt="Taïji Quan Qi Gong ASSAM Saint-Aubin-de-Médoc">
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+            <span></span><span></span><span></span>
+            <span class="sr-only">Ouvrir le menu</span>
+        </button>
+
+        <nav id="main-nav" class="main-nav" aria-label="Navigation principale">
+            <a href="index.html">Accueil</a>
+            <a href="tai-ji-quan.html">Taïji Quan</a>
+            <a href="qi-gong.html">Qi Gong</a>
+            <a href="horaires-lieux.html">Horaires &amp; lieux</a>
+            <a class="nav-button" href="#inscription">Nous rejoindre</a>
+        </nav>
+    </div>
+</header>
+
+<main class="inner-page">
+    <article class="inner-page__content schedule-page" aria-labelledby="inner-page-title">
+        <h1 id="inner-page-title">Cours, horaires et tarifs</h1>
+
+        <div class="leaf-separator leaf-separator--small" aria-hidden="true">
+            <b>◆</b>
+        </div>
+
+        <section class="schedule-section" aria-labelledby="location-title">
+            <h2 id="location-title">Le lieu des cours</h2>
+            <p>Les cours ont lieu à l'adresse suivante :</p>
+            <address class="course-address">
+                <strong>Salle polyvalente de l’école primaire Jean de la Fontaine</strong>
+                <span>4 Route Serpentine</span>
+                <span>33160 Saint-Aubin-de-Médoc</span>
+                <span>(après les terrains de sports)</span>
+            </address>
+        </section>
+
+        <section class="schedule-section" aria-labelledby="schedule-title">
+            <h2 id="schedule-title">Les horaires</h2>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <h3>Taïji Quan</h3>
+                    <p>Le lundi soir de 19h00 à 20h30</p>
+                </div>
+                <div class="schedule-card">
+                    <h3>Qi Gong</h3>
+                    <p>Le mercredi et le jeudi soir de 19h00 à 20h30</p>
+                </div>
+            </div>
+            <p class="schedule-note">Possibilité de pratiquer 2 jours consécutifs.</p>
+        </section>
+
+        <section class="schedule-section" aria-labelledby="pricing-title">
+            <h2 id="pricing-title">Les tarifs</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>1 séance hebdomadaire</h3>
+                    <p>Taïji Quan ou Qi Gong</p>
+                    <strong class="price">185 €</strong>
+                </div>
+                <div class="pricing-card">
+                    <h3>2 séances hebdomadaires</h3>
+                    <p>Taïji Quan &amp; Qi Gong, ou 2 fois Qi Gong</p>
+                    <strong class="price">240 €</strong>
+                </div>
+            </div>
+            <p class="trial-note">L’adhésion est considérée comme définitive après 3 séances d’essais dans l’une ou l’autre des disciplines.</p>
+        </section>
+    </article>
+
+    <section class="inner-registration-wrapper" aria-label="Inscription">
+        <section id="inscription" class="registration" aria-labelledby="registration-title">
+            <h2 id="registration-title">Nous rejoindre</h2>
+            <p>Demande d’inscription – Saison 2026-2027</p>
+
+            <form action="sheet.php" method="post">
+                <div class="form-grid">
+                    <label>Nom <em>*</em>
+                        <input type="text" name="nom" autocomplete="family-name" required>
+                    </label>
+
+                    <label>Prénom <em>*</em>
+                        <input type="text" name="prenom" autocomplete="given-name" required>
+                    </label>
+
+                    <label class="field-birth">Date de naissance <em>*</em>
+                        <input type="date" name="naissance" autocomplete="bday" required>
+                    </label>
+
+                    <label class="field-full">Adresse <em>*</em>
+                        <input type="text" name="adresse" autocomplete="street-address" required>
+                    </label>
+
+                    <label>Code postal <em>*</em>
+                        <input type="text" name="code_postal" autocomplete="postal-code" inputmode="numeric" required>
+                    </label>
+
+                    <label>Ville <em>*</em>
+                        <input type="text" name="ville" autocomplete="address-level2" required>
+                    </label>
+
+                    <label>Adresse e-mail <em>*</em>
+                        <input type="email" name="email" autocomplete="email" required>
+                    </label>
+
+                    <label>Téléphone portable <em>*</em>
+                        <input type="tel" name="telephone" autocomplete="tel" required>
+                    </label>
+
+                    <label class="honeypot" aria-hidden="true">Ne pas remplir ce champ
+                        <input type="text" name="website" tabindex="-1" autocomplete="off">
+                    </label>
+
+                    <label class="field-full captcha-field"><span id="captcha-question">Question anti-spam</span> <em>*</em>
+                        <input type="number" name="captcha" inputmode="numeric" aria-describedby="captcha-help" required>
+                        <input type="hidden" name="captcha_token" id="captcha-token">
+                        <small id="captcha-help">Répondez à cette question avant d’envoyer votre demande.</small>
+                    </label>
+                </div>
+
+                <button class="btn btn-green form-submit" type="submit">Envoyer ma demande</button>
+
+                <p class="form-status" role="status" aria-live="polite"></p>
+
+                <p class="privacy">♙ &nbsp; Vos données sont utilisées uniquement dans le cadre de votre inscription<br>et ne sont jamais partagées.</p>
+            </form>
+        </section>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="site-footer__inner">
+        <div class="footer-brand">
+            <img src="assets/images/logo.png" alt="Taïji Quan Qi Gong ASSAM Saint-Aubin-de-Médoc">
+        </div>
+
+        <div class="footer-contact">
+            <h2>Nous contacter</h2>
+            <p><a href="tel:+33681933516">06 81 93 35 16</a></p>
+            <p><a href="mailto:jean-marc.hellec@orange.fr">jean-marc.hellec@orange.fr</a></p>
+        </div>
+
+        <div class="footer-social">
+            <h2>Nous suivre</h2>
+            <div class="social-links">
+                <a class="social-circle" href="#" aria-label="Facebook de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2.6V2.1L14.4 2C11 2 9.8 4 9.8 6.5v2H7v4.2h2.8V22H14v-9.3h3.2l.5-4.2H14Z"/></svg>
+                </a>
+                <a class="social-circle" href="#" aria-label="Instagram de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9Zm9.8 1.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+                </a>
+                <a class="social-circle" href="#" aria-label="TikTok de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.6 2c.3 2.5 1.7 4 4.4 4.2v3.4a8 8 0 0 1-4.4-1.3v6.5A7.2 7.2 0 1 1 9.4 7.7v3.5a3.8 3.8 0 1 0 2.7 3.6V2h3.5Z"/></svg>
+                </a>
+                <a class="social-circle" href="#" aria-label="X de la section Taïji Quan et Qi Gong">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22H17l-4.9-6.4L6.5 22H3.3l7.3-8.4L2.9 2h6.4l4.4 5.8L18.9 2Zm-1.1 17.8h1.7L8.4 4.1H6.6l11.2 15.7Z"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-footer__bottom">
+        <p>© 2026 Section Taïji Quan – Qi Gong ASSAM Saint-Aubin-de-Médoc – Tous droits réservés</p>
+        <p><a href="#">Mentions légales</a><span>|</span><a href="#">Confidentialité</a></p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
