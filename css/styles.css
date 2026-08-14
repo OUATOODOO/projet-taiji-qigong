@@ -709,3 +709,55 @@ h1,h2,h3 {
     cursor:wait;
     opacity:.65;
 }
+
+/* Full-width template for simple content pages */
+.inner-page {
+    padding:48px 24px 64px;
+}
+.inner-page__content {
+    width:min(100%,var(--content));
+    margin:auto;
+    padding:48px 56px 56px;
+    border-radius:7px;
+    background:linear-gradient(135deg,#fafaf5,#eef2e7);
+}
+.inner-page__content h1 {
+    margin-bottom:12px;
+    text-align:center;
+    font-size:clamp(2.35rem,5vw,3.4rem);
+    line-height:1.15;
+}
+.inner-page__content h2 {
+    margin:38px 0 14px;
+    font-size:1.8rem;
+    line-height:1.25;
+}
+.inner-page__content p {
+    margin-bottom:18px;
+    line-height:1.75;
+}
+.inner-page__content p:last-child {
+    margin-bottom:0;
+}
+
+@media (max-width:760px) {
+    .inner-page {
+        padding:32px 16px 44px;
+    }
+    .inner-page__content {
+        padding:38px 28px 42px;
+    }
+}
+
+@media (max-width:520px) {
+    .inner-page {
+        padding:20px 12px 32px;
+    }
+    .inner-page__content {
+        padding:32px 20px 36px;
+    }
+    .inner-page__content h2 {
+        margin-top:32px;
+        font-size:1.55rem;
+    }
+}
