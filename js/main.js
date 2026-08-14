@@ -19,6 +19,77 @@
         });
     }
 
+    const gallery = document.querySelector('.activity-gallery');
+    const lightbox = document.querySelector('.lightbox');
+
+    if (gallery && lightbox) {
+        const galleryButtons = Array.from(gallery.querySelectorAll('[data-lightbox-index]'));
+        const lightboxImage = lightbox.querySelector('.lightbox__image');
+        const closeButton = lightbox.querySelector('.lightbox__close');
+        const previousButton = lightbox.querySelector('.lightbox__previous');
+        const nextButton = lightbox.querySelector('.lightbox__next');
+        const focusableButtons = [closeButton, previousButton, nextButton];
+        let currentIndex = 0;
+        let lastFocusedButton = null;
+
+        function showImage(index) {
+            currentIndex = (index + galleryButtons.length) % galleryButtons.length;
+            const thumbnail = galleryButtons[currentIndex].querySelector('img');
+            lightboxImage.src = thumbnail.src;
+            lightboxImage.alt = thumbnail.alt;
+        }
+
+        function openLightbox(index, trigger) {
+            lastFocusedButton = trigger;
+            showImage(index);
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('lightbox-open');
+            closeButton.focus();
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('is-open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            lightboxImage.src = '';
+            document.body.classList.remove('lightbox-open');
+            if (lastFocusedButton) lastFocusedButton.focus();
+        }
+
+        galleryButtons.forEach(function (galleryButton, index) {
+            galleryButton.addEventListener('click', function () {
+                openLightbox(index, galleryButton);
+            });
+        });
+
+        previousButton.addEventListener('click', function () { showImage(currentIndex - 1); });
+        nextButton.addEventListener('click', function () { showImage(currentIndex + 1); });
+        closeButton.addEventListener('click', closeLightbox);
+
+        lightbox.addEventListener('click', function (event) {
+            if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function (event) {
+            if (!lightbox.classList.contains('is-open')) return;
+
+            if (event.key === 'Escape') closeLightbox();
+            if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+            if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+
+            if (event.key === 'Tab') {
+                const focusedIndex = focusableButtons.indexOf(document.activeElement);
+                if (event.shiftKey && focusedIndex <= 0) {
+                    event.preventDefault();
+                    focusableButtons[focusableButtons.length - 1].focus();
+                } else if (!event.shiftKey && focusedIndex === focusableButtons.length - 1) {
+                    event.preventDefault();
+                    focusableButtons[0].focus();
+                }
+            }
+        });
+    }
+
     const form = document.querySelector('.registration form');
 
     if (!form) return;
