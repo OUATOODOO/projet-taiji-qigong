@@ -754,6 +754,10 @@ h1,h2,h3 {
 .inner-page__content p a:hover {
     color:var(--dark);
 }
+.inner-registration-wrapper {
+    width:min(100%,780px);
+    margin:64px auto 0;
+}
 
 @media (max-width:760px) {
     .inner-page {
