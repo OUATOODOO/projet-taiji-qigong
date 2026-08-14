@@ -25,19 +25,43 @@
 
     const captchaQuestion = form.querySelector('#captcha-question');
     const captchaInput = form.querySelector('[name="captcha"]');
+    const captchaToken = form.querySelector('#captcha-token');
     const honeypot = form.querySelector('[name="website"]');
     const submitButton = form.querySelector('.form-submit');
     const status = form.querySelector('.form-status');
     const submitLabel = submitButton.textContent;
-    let captchaAnswer;
     let isSubmitting = false;
 
-    function generateCaptcha() {
-        const firstNumber = Math.floor(Math.random() * 9) + 1;
-        const secondNumber = Math.floor(Math.random() * 9) + 1;
-        captchaAnswer = firstNumber + secondNumber;
-        captchaQuestion.textContent = 'Combien font ' + firstNumber + ' + ' + secondNumber + ' ?';
+    async function generateCaptcha() {
+        captchaToken.value = '';
         captchaInput.value = '';
+
+        try {
+            const response = await fetch('captcha.php', {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                cache: 'no-store'
+            });
+
+            if (!response.ok) {
+                throw new Error('Échec du chargement du captcha : HTTP ' + response.status);
+            }
+
+            const data = await response.json();
+
+            if (!data || data.success !== true || typeof data.question !== 'string' || !data.question.trim()
+                || typeof data.token !== 'string' || !data.token.trim()) {
+                throw new Error('Réponse invalide reçue depuis captcha.php.');
+            }
+
+            captchaQuestion.textContent = data.question;
+            captchaToken.value = data.token;
+        } catch (error) {
+            console.error(error);
+            showStatus('Impossible de charger la question anti-spam. Veuillez réessayer.', 'error');
+        }
     }
 
     function showStatus(message, state) {
@@ -57,9 +81,8 @@
             return;
         }
 
-        if (Number(captchaInput.value) !== captchaAnswer) {
-            showStatus('La réponse à la question anti-spam est incorrecte.', 'error');
-            captchaInput.focus();
+        if (!captchaToken.value.trim()) {
+            showStatus('Impossible de charger la question anti-spam. Veuillez réessayer.', 'error');
             return;
         }
 
@@ -94,12 +117,18 @@
                     ? result.message
                     : 'Une erreur est survenue lors de l’envoi. Veuillez réessayer.';
                 showStatus(message, 'error');
+
+                if (result && (result.code === 'INVALID_CAPTCHA' || result.code === 'EXPIRED_CAPTCHA')) {
+                    await generateCaptcha();
+                    captchaInput.focus();
+                }
+
                 return;
             }
 
             showStatus(result.message || 'Votre demande a bien été envoyée.', 'success');
             form.reset();
-            generateCaptcha();
+            await generateCaptcha();
         } catch (error) {
             console.error(error);
             showStatus('Une erreur est survenue lors de l’envoi. Veuillez réessayer.', 'error');
